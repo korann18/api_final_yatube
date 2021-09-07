@@ -20,7 +20,9 @@ class FollowViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user,
-                        following=get_object_or_404(User, username=self.request.data.get('following')))
+                        following=get_object_or_404(
+                            User,
+                            username=self.request.data.get('following')))
 
 
 class PostViewSet(viewsets.ModelViewSet):
